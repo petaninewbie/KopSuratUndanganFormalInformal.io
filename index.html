@@ -228,6 +228,35 @@
             line-height: 1.7;
         }
 
+        /* Submission Box */
+        .submission-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-left: 5px solid var(--primary-light);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .submission-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .submission-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+        }
+
         /* Module Practice Steps */
         .module-step {
             background: #fff;
@@ -400,20 +429,146 @@
         </h2>
         <div class="theory-grid">
             <!-- Topik 1 -->
-            <div class="theory-card">
-                <h3>Topik 1: Kop Surat Resmi & Insert Image</h3>
+            <div class="theory-card-full">
+                <h3>Topik 1: Kop Surat Resmi & Insert Image — Landasan Teori, Komponen, dan Pemformatan Digital</h3>
+                
+                <!-- Ringkasan Kop Surat Resmi & Insert Image -->
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 18px; border-radius: 6px; margin-bottom: 25px;">
+                    <h4 style="margin-top: 0; border-left: none; padding-left: 0; color: var(--primary-color);">📌 Ringkasan Kop Surat Resmi & Insert Image</h4>
+                    <ul>
+                        <li><strong>Header Area:</strong> Area khusus di bagian atas dokumen yang konsisten di setiap halaman, digunakan untuk nama instansi, alamat, dan kontak resmi.</li>
+                        <li><strong>Teknik Wrap Text:</strong> Pengaturan interaksi gambar dengan teks. Opsi <code>Square</code> atau <code>Tight</code> digunakan agar logo instansi fleksibel digeser di samping alamat tanpa merusak tata letak teks.</li>
+                        <li><strong>Garis Pembatas Kop:</strong> Dibuat presisi menggunakan fitur <code>Paragraph Borders</code> (Bottom Border dengan garis ganda tebal-tipis) atau <code>Shape Line</code> dengan menahan tombol <code>Shift</code> agar tegak lurus sempurna.</li>
+                    </ul>
+                </div>
+
+                <!-- Bagian I: Landasan Teoritis -->
+                <h4>I. Landasan Teoritis Kop Surat dan Identitas Dokumen</h4>
+                <h5>1. Definisi dan Fungsi Kop Surat (Letterhead)</h5>
+                <p>Kop surat (<em>letterhead</em>) adalah bagian identitas resmi yang diletakkan pada bagian teratas (<em>header area</em>) dari sebuah dokumen tertulis. Dalam tata kelola kearsipan dan korespondensi resmi, kop surat berfungsi sebagai penanda keabsahan yuridis, identitas visual organisasi, serta sarana komunikasi resmi yang merepresentasikannya ke pihak luar.</p>
+                <p>Kop surat memiliki tiga fungsi utama dalam komunikasi perkantoran:</p>
                 <ul>
-                    <li><strong>Header Area:</strong> Area khusus di bagian atas dokumen yang konsisten di setiap halaman, digunakan untuk nama instansi, alamat, dan kontak resmi.</li>
-                    <li><strong>Teknik Wrap Text:</strong> Pengaturan interaksi gambar dengan teks. Opsi <code>Square</code> atau <code>Tight</code> digunakan agar logo instansi fleksibel digeser di samping alamat tanpa merusak tata letak teks.</li>
-                    <li><strong>Garis Pembatas Kop:</strong> Dibuat presisi menggunakan fitur <code>Paragraph Borders</code> (Bottom Border dengan garis ganda tebal-tipis) atau <code>Shape Line</code> dengan menahan tombol <code>Shift</code> agar tegak lurus sempurna.</li>
+                    <li><strong>Fungsi Autentikasi Legal:</strong> Menunjukkan bahwa surat dikeluarkan secara sah oleh entitas atau instansi terdaftar, sehingga memberikan bobot hukum dan kepercayaan bagi penerima.</li>
+                    <li><strong>Fungsi Identitas &amp; Branding:</strong> Memperkuat citra profesional institusi melalui elemen visual seperti logo, tata warna (<em>color scheme</em>), dan tipografi khas institusi.</li>
+                    <li><strong>Fungsi Pusat Informasi Kontak:</strong> Menyediakan data komunikasi yang mudah diakses oleh penerima surat untuk keperluan korespondensi balasan atau verifikasi (alamat fisik, nomor telepon, email resmi, dan website).</li>
                 </ul>
+
+                <h5>2. Kedudukan Kop Surat dalam Header Area</h5>
+                <p>Dalam aplikasi pengolah kata (seperti Microsoft Word atau Google Docs), kop surat secara teknis disematkan pada bagian <strong>Header Area</strong>. Fitur ini memastikan bahwa kop surat akan secara otomatis muncul dengan konsisten pada setiap halaman dokumen (atau halaman pertama saja apabila dikonfigurasi menggunakan opsi <em>Different First Page</em>).</p>
+
+                <!-- Bagian II: Anatomi dan Komponen Kop Surat Resmi -->
+                <h4>II. Anatomi dan Komponen Kop Surat Resmi</h4>
+                <p>Standar penyusunan kop surat resmi kedinasan maupun instansi swasta terdiri atas elemen-elemen terstruktur berikut:</p>
+                <ol>
+                    <li><strong>Logo Institusi/Perusahaan:</strong> Diletakkan di posisi kiri, kanan, atau tengah atas. Logo harus memiliki resolusi tinggi agar tidak buram saat dicetak.</li>
+                    <li><strong>Nama Instansi Induk / Pemerintah:</strong> Menunjukkan tingkatan hirarki tertinggi (misalnya: <em>PEMERINTAH KOTA SURABAYA / DINAS PENDIDIKAN DAN KEBUDAYAAN</em>).</li>
+                    <li><strong>Nama Unit Kerja / Sekolah / Perusahaan:</strong> Menunjukkan satuan kerja penerbit surat (misalnya: <em>SMK NEGERI 1 CENDEKIA</em>).</li>
+                    <li><strong>Alamat Kontak Lengkap:</strong> Memuat nama jalan, nomor bangunan, kota, kode pos, nomor telepon, nomor faksimili, alamat email resmi, serta URL situs web resmi.</li>
+                    <li><strong>Garis Pembatas Kop (Letterhead Separator):</strong> Garis mendatar (biasanya bergaris ganda tebal-tipis) yang memisahkan identitas instansi dengan badan utama surat.</li>
+                </ol>
+
+                <!-- Bagian III: Pengolahan Citra & Teknik Wrap Text -->
+                <h4>III. Pengolahan Citra Digital dan Pemformatan Wrap Text</h4>
+                <h5>1. Penanganan Gambar (Insert Image)</h5>
+                <p>Memasukkan logo ke dalam header memerlukan perhatian terhadap aspek teknis citra digital:</p>
+                <ul>
+                    <li><strong>Format Citra:</strong> Format PNG sangat direkomendasikan karena mendukung transparansi latar belakang (<em>transparent background</em>), sehingga logo tidak meninggalkan kotak putih jika ditempatkan di atas latar berwarna. Format JPEG dan SVG/Vector juga dapat digunakan.</li>
+                    <li><strong>Menjaga Aspect Ratio:</strong> Pengubahan ukuran logo wajib dilakukan dengan menyeret titik sudut (<em>corner handles</em>) gambar, bukan titik samping atau atas-bawah, agar gambar tidak terdistorsi (gepeng atau melar).</li>
+                </ul>
+
+                <h5>2. Klasifikasi Opsi Wrap Text (Pembungkus Teks)</h5>
+                <p>Opsi <em>Wrap Text</em> menentukan bagaimana teks di sekitar gambar berinteraksi dengan batas gambar tersebut:</p>
+
+                <div class="table-responsive" style="margin-bottom: 20px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 22%; text-align: left;">Opsi Wrap Text</th>
+                                <th style="width: 48%; text-align: left;">Mekanisme Interaksi Teks &amp; Gambar</th>
+                                <th style="width: 30%; text-align: left;">Kesesuaian Penggunaan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>In Line with Text</strong></td>
+                                <td>Gambar diperlakukan seolah-olah sebagai karakter teks tunggal dalam baris. Teks tidak dapat berada di samping gambar secara bebas.</td>
+                                <td>Simbol/ikon kecil di dalam kalimat. Tidak direkomendasikan untuk logo kop surat.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Square</strong></td>
+                                <td>Teks membungkus gambar dalam bentuk batas persegi rapi di sekeliling bingkai gambar. Gambar bebas digeser ke posisi mana pun.</td>
+                                <td><strong>Sangat Direkomendasikan:</strong> Ideal untuk penempatan logo di sebelah kiri atau kanan teks alamat kop.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tight</strong></td>
+                                <td>Teks membungkus mengikuti kontur/transparansi sebenarnya dari bentuk gambar.</td>
+                                <td><strong>Sangat Direkomendasikan:</strong> Cocok untuk logo berbentuk lingkaran, perisai, atau bentuk kustom non-persegi.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Behind Text</strong></td>
+                                <td>Gambar diletakkan di latar belakang di bawah lapisan teks. Teks akan menutupi gambar.</td>
+                                <td>Pemberian tanda air (<em>watermark</em>) atau latar transparan.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>In Front of Text</strong></td>
+                                <td>Gambar mengapung di atas teks dan menutup teks yang berada di bawahnya.</td>
+                                <td>Stempel digital, tanda tangan digital, atau elemen dekoratif khusus.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Bagian IV: Metode Pembuatan Garis Pembatas Kop Surat -->
+                <h4>IV. Metode Pembuatan Garis Pembatas Kop Surat</h4>
+                <p>Terdapat tiga metode utama dalam pembuatan garis pembatas kop surat pada aplikasi pengolah kata:</p>
+                <ol>
+                    <li><strong>Metode Paragraph Borders (Bottom Border):</strong>
+                        <br>Metode paling presisi dan direkomendasikan secara profesional. Garis dibuat dengan mengatur properti <em>Borders and Shading</em> pada paragraf terakhir alamat. Kelebihannya adalah garis terikat secara dinamis pada teks dan lebar margin, sehingga tidak akan tergeser saat isi dokumen berubah. Dapat diatur menggunakan gaya garis ganda (tebal-tipis).
+                    </li>
+                    <li><strong>Metode Shape Line (Garis Vektor):</strong>
+                        <br>Garis digambar manual menggunakan fitur <code>Insert &gt; Shapes &gt; Line</code>. Untuk memastikan garis benar-benar lurus horizontal (0 derajat), pengguna wajib menahan tombol <code>Shift</code> pada papan ketik saat menarik garis.
+                    </li>
+                    <li><strong>Metode Table Layout (Tabel Tanpa Bingkai Samping):</strong>
+                        <br>Kop dibuat di dalam tabel 1 baris x 2 kolom (kolom kiri untuk logo, kolom kanan untuk teks alamat). Garis pembatas dibuat dengan mengaktifkan hanya <em>Bottom Border</em> pada tabel, sedangkan garis batas tabel lainnya disembunyikan (<em>No Border</em>).
+                    </li>
+                </ol>
+
+                <!-- Bagian V: Draft Contoh Kop Surat Resmi -->
+                <h4>V. Draft Contoh Struktur Kop Surat Resmi</h4>
+
+                <h5>DRAFT 1: Kop Surat Kedinasan / Pemerintahan (Format Standar)</h5>
+                <pre class="draft-block">=================================================================================
+ [LOGO]                 PEMERINTAH PROVINSI JAWA BARAT
+                             DINAS PENDIDIKAN
+                      CABANG DINAS PENDIDIKAN WILAYAH VII
+                       SMK NEGERI 1 CENDEKIA BANDUNG
+             Jl. Soekarno-Hatta No. 456 Bandung | Telp: (022) 7500123
+             Website: www.smkn1cendekia.sch.id | Email: info@smkn1cendekia.sch.id
+=================================================================================</pre>
+
+                <h5>DRAFT 2: Kop Surat Perusahaan / Swasta (Format Modern)</h5>
+                <pre class="draft-block">=================================================================================
+ [LOGO]                 PT NUSANTARA TEKNOLOGI UTAMA
+                    Enterprise Software &amp; IT Solutions
+           Gedung Cyber Tower Lt. 8, Jl. H.R. Rasuna Said, Jakarta Selatan
+          Telp: (021) 52901122 | Fax: (021) 52901123 | Web: www.nusantara-tech.co.id
+=================================================================================</pre>
+
+                <!-- Bagian VI: Kesimpulan Topik 1 -->
+                <h4>VI. Kesimpulan</h4>
+                <p>Penyusunan Kop Surat Resmi dan teknik <em>Insert Image</em> memerlukan penguasaan atas tiga pilar utama:</p>
+                <ol>
+                    <li><strong>Penataan Struktur Header:</strong> Memastikan seluruh identitas resmi instansi tersusun runtut dan legal.</li>
+                    <li><strong>Pengelolaan Citra &amp; Wrap Text:</strong> Penempatan logo beresolusi tinggi dengan opsi pembungkus teks yang tepat (<em>Square/Tight</em>) tanpa merusak kerapian tata letak teks.</li>
+                    <li><strong>Presisi Pembatas:</strong> Pembuatan garis separator yang rapi, sejajar, dan terintegrasi secara profesional dengan layout dokumen.</li>
+                </ol>
             </div>
 
-            <!-- Topik 2 (UPDATED WITH FULL THEORETICAL FRAMEWORK) -->
+            <!-- Topik 2 -->
             <div class="theory-card-full">
                 <h3>Topik 2: Surat Undangan — Struktur, Desain, dan Implementasi Draft</h3>
                 
-                <!-- Ringkasan Klasifikasi Surat Undangan (Isi awal Topik 2 yang tetap dipertahankan) -->
+                <!-- Ringkasan Klasifikasi Surat Undangan -->
                 <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 18px; border-radius: 6px; margin-bottom: 25px;">
                     <h4 style="margin-top: 0; border-left: none; padding-left: 0; color: var(--primary-color);">📌 Ringkasan Klasifikasi Surat Undangan</h4>
                     <ul>
@@ -430,8 +585,8 @@
                             <br>Dikeluarkan oleh perorangan, keluarga, atau kelompok sosial informal. Menggunakan gaya bahasa yang lebih santai, ramah, dan komunikatif tanpa terikat aturan ketat kedinasan (tidak menggunakan kop surat, nomor surat, atau stempel).
                             <br><strong>Yang Termasuk Undangan Informal:</strong>
                             <ul class="sub-list">
-                                <li><strong>Acara Pribadi & Keluarga:</strong> Undangan Pesta Ulang Tahun, Undangan Syukuran (Rumah Baru/Kelahiran), Undangan Pernikahan/Resepsi, Undangan Khitanan.</li>
-                                <li><strong>Acara Komunitas & Sosial:</strong> Undangan Reuni Alumni Sekolah, Undangan Arisan Keluarga/RT, Undangan Gathering Komunitas Hobi.</li>
+                                <li><strong>Acara Pribadi &amp; Keluarga:</strong> Undangan Pesta Ulang Tahun, Undangan Syukuran (Rumah Baru/Kelahiran), Undangan Pernikahan/Resepsi, Undangan Khitanan.</li>
+                                <li><strong>Acara Komunitas &amp; Sosial:</strong> Undangan Reuni Alumni Sekolah, Undangan Arisan Keluarga/RT, Undangan Gathering Komunitas Hobi.</li>
                                 <li><strong>Kegiatan Warga Non-Kedinasan:</strong> Undangan Pentas Seni RT/RW, Undangan Kerja Bakti/Bakti Sosial Karang Taruna.</li>
                             </ul>
                         </li>
@@ -900,6 +1055,26 @@ Panitia Reuni Perak 2001</pre>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Section 5: Pengumpulan Tugas -->
+    <div class="section">
+        <h2 class="section-title">
+            <span class="number">5</span>
+            Pengumpulan Tugas Praktik (LMS Merdeka Belajar)
+        </h2>
+        <div class="submission-box">
+            <h3 style="color: var(--primary-color); font-size: 18px; margin-bottom: 10px;">🚀 Instruksi Pengumpulan Tugas Karya</h3>
+            <p style="font-size: 14.5px; color: #1e293b; max-width: 800px; margin: 0 auto 15px auto;">
+                Setelah menyelesaikan seluruh rangkaian teori dan aktivitas pembelajaran praktik (Topik 1 hingga Topik 4), kumpulkan seluruh berkas bukti karya Anda (file <code>.docx</code>, dan <code>.pdf</code>melalui tautan portal resmi LMS di bawah ini:
+            </p>
+            <a href="https://sites.google.com/guru.smk.belajar.id/lms-merdeka-belajar/portal-utama/siforgas" target="_blank" rel="noopener noreferrer" class="submission-btn">
+                🔗 Kumpulkan Tugas di Portal LMS SIFORGAS
+            </a>
+            <p style="font-size: 12.5px; color: #64748b; margin-top: 15px;">
+                Tautan Pengumpulan: <code>https://sites.google.com/guru.smk.belajar.id/lms-merdeka-belajar/portal-utama/siforgas</code>
+            </p>
         </div>
     </div>
 
