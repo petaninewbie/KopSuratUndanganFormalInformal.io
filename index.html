@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran Informatika Kelas X SMK - Aplikasi Pengolah Kata</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-light: #2563eb;
+            --secondary-color: #0f766e;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --border-color: #e2e8f0;
+            --accent-bg: #eff6ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header Banner */
+        .header-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .header-banner h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header-banner p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .number {
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Content & Subsections */
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+        }
+
+        .theory-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--primary-light);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .theory-card-full {
+            grid-column: 1 / -1;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .theory-card h3, .theory-card-full h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .theory-card-full h4 {
+            color: var(--secondary-color);
+            font-size: 16px;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 8px;
+        }
+
+        .theory-card-full h5 {
+            color: var(--heading-color);
+            font-size: 14.5px;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        .theory-card ul, .theory-card-full ul {
+            padding-left: 20px;
+        }
+
+        .theory-card li, .theory-card-full li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .theory-card-full ol {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .theory-card-full ol li {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .theory-card-full p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .sub-list {
+            margin-top: 4px;
+            margin-bottom: 6px;
+            padding-left: 18px !important;
+            list-style-type: circle;
+        }
+
+        .sub-list li {
+            margin-bottom: 4px;
+            font-size: 13.5px;
+            color: #475569;
+        }
+
+        /* Draft Code Blocks */
+        pre.draft-block {
+            background-color: #f8fafc;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12.5px;
+            line-height: 1.45;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            color: #1e293b;
+        }
+
+        /* Case Study Box */
+        .case-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 5px solid #16a34a;
+            padding: 22px;
+            border-radius: 8px;
+        }
+
+        .case-box h3 {
+            color: #15803d;
+            margin-bottom: 10px;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .case-box p {
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        /* Module Practice Steps */
+        .module-step {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+        }
+
+        .module-step:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08);
+        }
+
+        .module-step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .module-step-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .file-badge {
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+        }
+
+        .module-step ol {
+            padding-left: 20px;
+        }
+
+        .module-step li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Rubric Table */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: left;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .indicator-header {
+            width: 18%;
+            text-align: left;
+        }
+
+        .scale-header {
+            width: 16.4%;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .indicator-title {
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+
+        /* Code highlight inside text */
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #0369a1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .theory-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 20px;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .header-banner {
+                background: #1e3a8a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <span class="badge">Mata Pelajaran Informatika — Kelas X SMK</span>
+        <h1>Modul Pembelajaran: Pengolahan Dokumen Surat Resmi & Layouting</h1>
+        <p>Berbasis Proyek (Project-Based Learning) — Aplikasi Pengolah Kata</p>
+    </div>
+
+    <!-- Section 1: Kajian Teori -->
+    <div class="section">
+        <h2 class="section-title">
+            <span class="number">1</span>
+            Kajian Teori
+        </h2>
+        <div class="theory-grid">
+            <!-- Topik 1 -->
+            <div class="theory-card">
+                <h3>Topik 1: Kop Surat Resmi & Insert Image</h3>
+                <ul>
+                    <li><strong>Header Area:</strong> Area khusus di bagian atas dokumen yang konsisten di setiap halaman, digunakan untuk nama instansi, alamat, dan kontak resmi.</li>
+                    <li><strong>Teknik Wrap Text:</strong> Pengaturan interaksi gambar dengan teks. Opsi <code>Square</code> atau <code>Tight</code> digunakan agar logo instansi fleksibel digeser di samping alamat tanpa merusak tata letak teks.</li>
+                    <li><strong>Garis Pembatas Kop:</strong> Dibuat presisi menggunakan fitur <code>Paragraph Borders</code> (Bottom Border dengan garis ganda tebal-tipis) atau <code>Shape Line</code> dengan menahan tombol <code>Shift</code> agar tegak lurus sempurna.</li>
+                </ul>
+            </div>
+
+            <!-- Topik 2 (UPDATED WITH FULL THEORETICAL FRAMEWORK) -->
+            <div class="theory-card-full">
+                <h3>Topik 2: Surat Undangan — Struktur, Desain, dan Implementasi Draft</h3>
+                
+                <!-- Ringkasan Klasifikasi Surat Undangan (Isi awal Topik 2 yang tetap dipertahankan) -->
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 18px; border-radius: 6px; margin-bottom: 25px;">
+                    <h4 style="margin-top: 0; border-left: none; padding-left: 0; color: var(--primary-color);">📌 Ringkasan Klasifikasi Surat Undangan</h4>
+                    <ul>
+                        <li><strong>Surat Undangan Formal (Resmi / Kedinasan):</strong>
+                            <br>Dikeluarkan oleh instansi, lembaga, sekolah, atau organisasi resmi. Menggunakan bahasa baku/resmi dan wajib memiliki struktur lengkap: Kop Surat, Nomor Surat, Lampiran, Perihal, Tanggal, Alamat Tujuan, Salam Pembuka, Paragraf Isi, Rincian Acara, Paragraf Penutup, serta Bagian Tanda Tangan (Jabatan, Nama Terang, NIP/NIM, dan Stempel Basah/Digital).
+                            <br><strong>Yang Termasuk Undangan Formal:</strong>
+                            <ul class="sub-list">
+                                <li><strong>Kedinasan / Pemerintahan:</strong> Undangan Rapat Koordinasi Dinas, Undangan Upacara Hari Besar Nasional, Undangan Sosialisasi Kebijakan.</li>
+                                <li><strong>Instansi Pendidikan / Sekolah:</strong> Undangan Rapat Pleno Komite Sekolah, Undangan Kelulusan/Purnawiyata, Undangan Pameran/LKS, Undangan Rapat Dewan Guru.</li>
+                                <li><strong>Organisasi Resmi / Perusahaan:</strong> Undangan Rapat Anggota Tahunan (RAT), Undangan Rapat Direksi, Undangan Seminar/Webinar Nasional, Undangan Pelantikan Pengurus OSIS.</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 10px;"><strong>Surat Undangan Informal (Non-Formal / Setengah Resmi):</strong>
+                            <br>Dikeluarkan oleh perorangan, keluarga, atau kelompok sosial informal. Menggunakan gaya bahasa yang lebih santai, ramah, dan komunikatif tanpa terikat aturan ketat kedinasan (tidak menggunakan kop surat, nomor surat, atau stempel).
+                            <br><strong>Yang Termasuk Undangan Informal:</strong>
+                            <ul class="sub-list">
+                                <li><strong>Acara Pribadi & Keluarga:</strong> Undangan Pesta Ulang Tahun, Undangan Syukuran (Rumah Baru/Kelahiran), Undangan Pernikahan/Resepsi, Undangan Khitanan.</li>
+                                <li><strong>Acara Komunitas & Sosial:</strong> Undangan Reuni Alumni Sekolah, Undangan Arisan Keluarga/RT, Undangan Gathering Komunitas Hobi.</li>
+                                <li><strong>Kegiatan Warga Non-Kedinasan:</strong> Undangan Pentas Seni RT/RW, Undangan Kerja Bakti/Bakti Sosial Karang Taruna.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bagian I: Landasan Teoritis -->
+                <h4>I. Landasan Teoritis Surat Undangan</h4>
+                <h5>1. Definisi dan Fungsi Komunikasi</h5>
+                <p>Surat undangan (<em>invitation letter</em>) adalah dokumen komunikasi tertulis yang bertujuan untuk meminta kehadiran, partisipasi, atau keterlibatan seseorang atau sekelompok orang dalam suatu acara, kegiatan, atau pertemuan tertentu.</p>
+                <p>Dalam perspektif teori komunikasi, surat undangan memiliki tiga fungsi utama:</p>
+                <ul>
+                    <li><strong>Fungsi Informatif:</strong> Menyampaikan detail logistik acara secara akurat (apa, siapa, kapan, di mana, dan mengapa).</li>
+                    <li><strong>Fungsi Sosial/Relasional:</strong> Membangun, memelihara, atau mempererat hubungan antar-individu, antar-lembaga, maupun antara organisasi dan pemangku kepentingan (<em>stakeholders</em>).</li>
+                    <li><strong>Fungsi Administratif/Legal:</strong> Pada ranah formal, surat undangan berfungsi sebagai dokumen resmi pemicu kegiatan, dasar hukum penugasan, dan arsip pertanggungjawaban kegiatan.</li>
+                </ul>
+
+                <h5>2. Prinsip Kesantunan Berbahasa (<em>Politeness Theory</em>)</h5>
+                <p>Penyusunan surat undangan mengacu pada prinsip kesantunan berbahasa. Dalam undangan formal, kesantunan diwujudkan melalui penggunaan <strong>ragam bahasa baku</strong>, tuturan tidak langsung (<em>indirect speech act</em>), serta penghormatan terhadap hierarki jabatan/sosial penerima. Pada undangan informal, kesantunan diwujudkan melalui <strong>kehangatan nada tutur (<em>warmth &amp; friendliness</em>)</strong> dan kerapian penyampaian informasi.</p>
+
+                <!-- Bagian II: Klasifikasi & Comparative Analysis -->
+                <h4>II. Klasifikasi dan Comparative Analysis</h4>
+                <p>Surat undangan secara umum diklasifikasikan berdasarkan tingkat formalitas, hubungan antar-pihak, serta konteks acara.</p>
+                <p><strong>Tabel Perbandingan: Undangan Formal vs. Undangan Informal</strong></p>
+                
+                <div class="table-responsive" style="margin-bottom: 20px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 22%; text-align: left;">Indikator</th>
+                                <th style="width: 39%; text-align: left;">Surat Undangan Formal</th>
+                                <th style="width: 39%; text-align: left;">Surat Undangan Informal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Konteks Acara</strong></td>
+                                <td>Kedinasan, Rapat Organisasi, Seminar, Acara Kenegaraan, Pernikahan Resmi.</td>
+                                <td>Pesta Ulang Tahun, Syukuran Rumah, Reuni Keluarga, Arisan.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ragam Bahasa</strong></td>
+                                <td>Bahasa Indonesia Baku (EYD/PUEBI), lugas, objektif, dan terstruktur.</td>
+                                <td>Bahasa santai, komunikatif, ekspresif, dan personal.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Identitas Pengirim</strong></td>
+                                <td>Atas nama instansi/organisasi dengan stempel dan tanda tangan pejabat.</td>
+                                <td>Atas nama pribadi, keluarga, atau panitia kecil.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kelengkapan Atribut</strong></td>
+                                <td>Menggunakan Kop Surat, Nomor Surat, Perihal, Tembusan, dan Lampiran.</td>
+                                <td>Tanpa Kop Surat, Nomor Surat, atau Tembusan.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Media Penyampaian</strong></td>
+                                <td>Cetak resmi (kertas berkop) atau surel (<em>email</em>) resmi dengan format PDF.</td>
+                                <td>Kartu undangan cetak kreatif, pesan singkat digital (WhatsApp), media sosial.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Bagian III: Anatomi dan Struktur Tekstual -->
+                <h4>III. Anatomi dan Struktur Tekstual</h4>
+                <h5>1. Struktur Surat Undangan Formal</h5>
+                <p>Surat undangan formal yang baku mencakup 10 komponen utama:</p>
+                <ol>
+                    <li><strong>Kop / Kepala Surat:</strong> Memuat logo, nama instansi/perusahaan, alamat lengkap, nomor telepon, serta surel/website resmi.</li>
+                    <li><strong>Nomor Surat, Lampiran, dan Hal/Perihal:</strong> Digunakan untuk tata kelola kearsipan dan kejelasan tujuan surat.</li>
+                    <li><strong>Tanggal Penulisan Surat:</strong> Penanda waktu diterbitkannya surat.</li>
+                    <li><strong>Alamat Tujuan/Penerima (<em>Inside Address</em>):</strong> Nama penerima beserta jabatan atau alamat instansi yang dituju.</li>
+                    <li><strong>Salam Pembuka:</strong> Menggunakan bentuk baku seperti <em>"Dengan hormat,"</em>.</li>
+                    <li><strong>Paragraf Pembuka:</strong> Menyatakan latar belakang atau dasar dilaksanakannya kegiatan.</li>
+                    <li><strong>Isi Utama (Detail Acara):</strong>
+                        <ul class="sub-list">
+                            <li>Hari / Tanggal</li>
+                            <li>Waktu / Pukul</li>
+                            <li>Tempat / Lokasi (termasuk link <em>virtual meeting</em> jika daring)</li>
+                            <li>Agenda / Tema Acara</li>
+                            <li>Instruksi khusus (cth: Pakaian/Dresscode, Konfirmasi Kehadiran/RSVP)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Paragraf Penutup:</strong> Ucapan terima kasih dan harapan atas kehadiran penerima.</li>
+                    <li><strong>Salam Penutup, Tanda Tangan, Nama Terang, dan Stempel:</strong> Pengesahan legalitas surat.</li>
+                    <li><strong>Tembusan (<em>Carbon Copy / CC</em>):</strong> <em>Jika ada pihak lain yang perlu mengetahui penerbitan surat tersebut.</em></li>
+                </ol>
+
+                <h5>2. Struktur Surat Undangan Informal</h5>
+                <p>Undangan informal memiliki struktur yang lebih fleksibel namun tetap harus runtut:</p>
+                <ol>
+                    <li><strong>Judul / Header Undangan:</strong> Nama acara yang menarik atau langsung (e.g., <em>"You're Invited!", "Syukuran Rumah Baru"</em>).</li>
+                    <li><strong>Salam Pembuka Akrab:</strong> Chat/salam hangat (e.g., <em>"Halo Teman-teman,", "Dear Sahabat,"</em>).</li>
+                    <li><strong>Maksud &amp; Tujuan:</strong> Penjelasan singkat mengenai acara yang dirayakan.</li>
+                    <li><strong>Rincian Acara:</strong> Hari, tanggal, jam, dan tempat/lokasi.</li>
+                    <li><strong>Catatan Khusus:</strong> Dresscode, arahan kado/donasi, atau link lokasi (Google Maps).</li>
+                    <li><strong>Salam Penutup &amp; Nama Pengirim:</strong> Salam hangat dan nama pemanggil/tuan rumah.</li>
+                </ol>
+
+                <!-- Bagian IV: Prinsip Desain, Tipografi, dan Layout -->
+                <h4>IV. Prinsip Desain, Tipografi, dan Tata Letak (Layout)</h4>
+                <h5>1. Hierarki Visual (<em>Visual Hierarchy</em>)</h5>
+                <ul>
+                    <li><strong>Focal Point:</strong> Mata pembaca harus langsung tertuju pada <strong>Nama/Jenis Acara</strong> dan <strong>Waktu/Tempat</strong>.</li>
+                    <li><strong>Ukuran Font:</strong> Judul/Nama Acara dianjurkan berukuran paling besar (16-24pt), diikuti sub-judul (12-14pt), dan isi detail (10-12pt).</li>
+                </ul>
+
+                <h5>2. Tipografi (<em>Typography</em>)</h5>
+                <ul>
+                    <li><strong>Formal:</strong> Gunakan kombinasi font Serif (<em>Times New Roman, Garamond, Georgia</em>) atau Sans-Serif profesional (<em>Arial, Helvetica, Calibri</em>). Batasi maksimal 2 jenis font.</li>
+                    <li><strong>Informal:</strong> Dapat mengombinasikan font <em>Display / Script / Cursive</em> untuk judul agar memberikan kesan hangat/kreatif, dikombinasikan dengan Sans-Serif (<em>Montserrat, Open Sans</em>) untuk detail acara agar tetap mudah dibaca.</li>
+                </ul>
+
+                <h5>3. Tata Letak dan Ruang Kosong (<em>Layout &amp; White Space</em>)</h5>
+                <ul>
+                    <li><strong>Alignment:</strong> Rata kiri (<em>left-aligned</em>) umum digunakan untuk surat dinas/formal; rata tengah (<em>center-aligned</em>) sering digunakan untuk kartu undangan pernikahan atau acara informal.</li>
+                    <li><strong>White Space:</strong> Sediakan margin yang cukup di sekeliling teks agar tampilan tidak terasa padat dan nyaman dibaca.</li>
+                </ul>
+
+                <h5>4. Elemen Digital Modern (<em>E-Invitation</em>)</h5>
+                <ul>
+                    <li><strong>RSVP Integrasi:</strong> Penggunaan pranala/QR Code menuju Google Form atau platform RSVP otomatis.</li>
+                    <li><strong>Peta Digital:</strong> Penambahan hiperlink/QR Code ke Google Maps atau Waze.</li>
+                </ul>
+
+                <!-- Bagian V: Draft Contoh Surat Undangan -->
+                <h4>V. Draft Contoh Surat Undangan</h4>
+
+                <h5>DRAFT 1: Surat Undangan Formal (Kedinasan / Organisasi / Instansi)</h5>
+                <pre class="draft-block">=================================================================================
+             PEMERINTAH KOTA SURABAYA
+          DINAS PENDIDIKAN DAN KEBUDAYAAN
+     Jl. Pemuda No. 123, Surabaya | Telp: (031) 555-0192
+     Website: www.disdik.surabaya.go.id | Email: kontak@disdik.surabaya.go.id
+=================================================================================
+
+Nomor   : 045/102/DPK/VIII/2026                               24 Agustus 2026
+Lampiran: 1 (satu) Berkas Jadwal Acara
+Hal     : Undangan Rapat Koordinasi Evaluasi Kurikulum Digital
+
+Yth. Kepala Sekolah SMA/SMK Negeri dan Swasta
+Se-Kota Surabaya
+di Tempat
+
+Dengan hormat,
+
+Sehubungan dengan pelaksanaan program digitalisasi pembelajaran tahun ajaran 2026/2027, 
+Dinas Pendidikan dan Kebudayaan Kota Surabaya akan menyelenggarakan Rapat Koordinasi 
+Evaluasi Implementasi Kurikulum Digital.
+
+Terkait hal tersebut, kami mengundang Bapak/Ibu Kepala Sekolah untuk hadir dalam rapat 
+yang akan dilaksanakan pada:
+
+    Hari / Tanggal : Kamis, 27 Agustus 2026
+    Waktu          : 09.00 WIB – 12.00 WIB
+    Tempat         : Aula Utama Gedung B Dinas Pendidikan Kota Surabaya
+                     Jl. Pemuda No. 123, Surabaya
+    Agenda         : 1. Evaluasi Capaian Pembelajaran Digital Semester I
+                     2. Sosialisasi Platform Ujian Berbasis Cloud
+
+Mengingat pentingnya agenda pembahasan tersebut, kehadiran Bapak/Ibu sangat kami harapkan 
+tepat pada waktunya. Konfirmasi kehadiran dapat diisi melalui tautan: bit.ly/RSVP-Rakor-2026 
+paling lambat Rabu, 26 Agustus 2026 pukul 15.00 WIB.
+
+Demikian surat undangan ini kami sampaikan. Atas perhatian dan kerja sama Bapak/Ibu, 
+kami ucapkan terima kasih.
+
+
+                                            Kepala Dinas Pendidikan dan Kebudayaan
+                                            Kota Surabaya,
+
+                                            [STAMPEL &amp; TTD]
+
+                                            Dr. H. Aris Budiman, M.Pd.
+                                            NIP. 19750812 200112 1 003
+
+Tembusan:
+1. Walikota Surabaya (sebagai laporan)
+2. Arsip</pre>
+
+                <h5>DRAFT 2: Surat Undangan Formal (Acara Akademik / Perusahaan)</h5>
+                <pre class="draft-block">=================================================================================
+                 PT INOVASI TEKNOLOGI NUSA
+       Gedung Menara Mandiri Lt. 15, Jl. Jend. Sudirman, Jakarta
+               Telp: 021-29938888 | www.inovasiteknologi.co.id
+=================================================================================
+
+Jakarta, 24 Agustus 2026
+
+Nomor  : 118/ITN-HRD/UND/VIII/2026
+Perihal: Undangan Web Seminar "AI Infrastructure &amp; Cybersecurity Trends 2027"
+
+Yth. Prof. Dr. Hendra Wijaya, M.T.
+Guru Besar Fakultas Ilmu Komputer
+Universitas Indonesia
+Depok, Jawa Barat
+
+Dengan hormat,
+
+Dalam rangka memperingati Hari Inovasi Teknologi Nasional, PT Inovasi Teknologi Nusa 
+akan menyelenggarakan Web Seminar (Webinar) Nasional bertajuk "AI Infrastructure &amp; 
+Cybersecurity Trends 2027". 
+
+Sehubungan dengan kepakaran Bapak di bidang keamanan siber, kami bermaksud mengundang 
+Bapak untuk hadir sekaligus menjadi Pembicara Utama (Keynote Speaker) dalam acara ini, 
+yang akan diselenggarakan pada:
+
+    Hari / Tanggal : Sabtu, 5 September 2026
+    Waktu          : 10.00 – 12.30 WIB
+    Media          : Zoom Meeting / YouTube Live (Link akan diberikan via email)
+    Peserta        : 500+ Praktisi IT, Akademisi, dan Mahasiswa
+
+Bersama surat ini, kami lampirkan pula kerangka acuan kerja (Term of Reference) serta 
+jadwal acara sebagai bahan pertimbangan Bapak.
+
+Mohon konfirmasi kesediaan Bapak paling lambat tanggal 28 Agustus 2026 dengan menghubungi 
+Sekretariat Panitia sdr. Maya (WhatsApp: 0812-9900-1122 / Email: event@inovasiteknologi.co.id).
+
+Demikian undangan ini kami sampaikan. Atas kesediaan dan keikutsertaan Bapak, kami mengucapkan 
+terima kasih.
+
+
+Salam hormat,
+Ketua Pelaksana,
+
+[Tanda Tangan Digital]
+
+Rian Pratama, M.Sc.
+Head of Corporate Communications</pre>
+
+                <h5>DRAFT 3: Surat Undangan Informal (Acara Keluarga / Syukuran)</h5>
+                <pre class="draft-block">---------------------------------------------------------------------------------
+                     UNDANGAN SYUKURAN KELUARGA &amp; RUMAH BARU
+---------------------------------------------------------------------------------
+
+Halo Keluarga &amp; Sahabat Tersayang,
+
+Puji dan syukur kami panjatkan kepada Tuhan Yang Maha Esa atas terselesaikannya 
+pembangunan rumah baru kami. Tanpa dukungan dan doa dari Bapak/Ibu/Saudara/i, 
+semua ini tentu tidak akan berjalan dengan lancar.
+
+Sebagai rasa ungkapan gembira, kami mengundang Bapak/Ibu/Saudara/i untuk hadir 
+dalam acara Syukuran &amp; Doa Bersama yang akan dilaksanakan pada:
+
+    📅 Hari / Tanggal : Minggu, 30 Agustus 2026
+    ⏰ Waktu          : Pukul 16.00 WIB – Selesai
+    🏡 Tempat         : Perumahan Cempaka Asri Blok C No. 12, Bandung
+    📍 Petunjuk Lokasi : bit.ly/PetaRumahBambang (Google Maps)
+
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i 
+dapat berkenan hadir dan memberikan doa restu secara langsung.
+
+Demi kelancaran konsumsi, mohon konfirmasi kehadiran sebelum hari Jumat, 28 Agustus 2026 
+melalui WA ke Bambang (0813-1122-3344).
+
+Sampai jumpa di hari H!
+
+Salam hangat,
+Keluarga Bambang &amp; Sarah
+---------------------------------------------------------------------------------</pre>
+
+                <h5>DRAFT 4: Undangan Digital / E-Invitation (Format Pesan WhatsApp / Media Sosial)</h5>
+                <pre class="draft-block">✨ YOU’RE INVITED! ✨
+Reuni Perak 25 Tahun Alumni SMA Negeri 1 Angkatan 2001
+
+Halo Rekan-rekan Alumni '01! 👋
+
+Tidak terasa sudah 25 tahun berlalu sejak kita melangkah keluar dari gerbang sekolah. 
+Yuk, luangkan waktu untuk kembali bernostalgia, menyambung silaturahmi, dan berbagi cerita!
+
+📌 DETAIL ACARA:
+• Hari/Tanggal: Sabtu, 12 September 2026
+• Waktu: 18.30 WIB – Selesai
+• Lokasi: Grand Ballroom Hotel Santika Utama, Jakarta
+• Dresscode: Casual Elegant (Dominasi Warna Putih / Denims)
+
+🎟️ KONTRIBUSI &amp; RSVP:
+• Biaya Kehadiran: Rp 250.000,- / orang (Buffet Dinner + Souvenir + Photo Booth)
+• Pembayaran via Rekening BCA: 123-456-7890 a.n. Panitia Reuni 2001
+• Konfirmasi Kehadiran &amp; Bukti Transfer: bit.ly/RSVP-ReuniAlumni2001
+
+⏰ Batas RSVP: 1 September 2026
+
+Ayo ramaikan dan bagikan pesan ini ke teman-teman seangkatan lainnya! 
+Kehadiranmu adalah pelengkap kebahagiaan kita semua. 🎉
+
+Salam Kangen,
+Panitia Reuni Perak 2001</pre>
+
+                <!-- Bagian VI: Kesimpulan -->
+                <h4>VI. Kesimpulan</h4>
+                <p>Penyusunan dan perancangan surat undangan—baik formal maupun informal—menuntut pemahaman mendalam atas:</p>
+                <ol>
+                    <li><strong>Ragam Bahasa:</strong> Ketepatan diksi sesuai tingkat formalitas hubungan antar-pihak.</li>
+                    <li><strong>Kelengkapan Anatomi:</strong> Kejelasan informasi dasar (<em>5W1H: What, Who, When, Where, Why, How</em>).</li>
+                    <li><strong>Penerapan Prinsip Desain:</strong> Hierarki visual yang runtut, tipografi yang terbaca, serta pemanfaatan media fisik maupun digital secara efektif.</li>
+                </ol>
+            </div>
+
+            <!-- Topik 3 -->
+            <div class="theory-card">
+                <h3>Topik 3: Surat Undangan — Praktik Layouting</h3>
+                <ul>
+                    <li><strong>Hirarki & Konsistensi Font:</strong> Menggunakan maksimal 2 jenis font profesional (misal: <em>Times New Roman</em> atau <em>Arial</em>). Ukuran font disesuaikan: Kop (12–14 pt Bold), Isi (11–12 pt), Keterangan (10 pt).</li>
+                    <li><strong>Pengaturan Tab Stop (Tabulasi):</strong> Pengaturan posisi perataan teks menggunakan tombol <code>Tab</code>. Digunakan untuk meletakkan titik dua (<code>:</code>) pada bagian rincian acara agar sejajar lurus secara vertikal tanpa spasi manual.</li>
+                </ul>
+            </div>
+
+            <!-- Topik 4 -->
+            <div class="theory-card">
+                <h3>Topik 4: Surat Undangan — Penyempurnaan Format</h3>
+                <ul>
+                    <li><strong>Margin Standar Kedinasan:</strong> Pengaturan jarak batas tepi kertas (Top: 3 cm, Left: 4 cm, Bottom: 3 cm, Right: 3 cm).</li>
+                    <li><strong>Ukuran Kertas & Page Setup:</strong> Konfigurasi ukuran standar A4 (21 x 29.7 cm) atau F4/Folio (<em>Custom Size</em>: 21.59 x 33 cm).</li>
+                    <li><strong>Print Setup & Export PDF:</strong> Pemeriksaan <code>Print Preview</code> untuk memastikan tidak ada halaman kosong berlebih (<em>blank page</em>) dan konversi ke PDF untuk menjaga tata letak agar terkunci saat dicetak.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Contoh Kasus -->
+    <div class="section">
+        <h2 class="section-title">
+            <span class="number">2</span>
+            Contoh Kasus Modul Praktik
+        </h2>
+        <div class="case-box">
+            <h3>📌 Studi Kasus Skenario Pembelajaran</h3>
+            <p>
+                Pengurus OSIS SMK Negeri 1 Cendekia akan menyelenggarakan kegiatan tahunan <strong>"Pameran Inovasi Teknologi & Hasil Karya Siswa"</strong>. Sebagai Sekretaris OSIS, Anda ditugaskan untuk menyusun, menata tata letak (<em>layouting</em>), memformat presisi, hingga mempersiapkan berkas siap cetak untuk <strong>Surat Undangan Resmi</strong> yang ditujukan kepada Kepala Dinas Pendidikan Kota dan Kepala Sekolah Mitra guna menghadiri pembukaan acara tersebut.
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 3: Modul Praktik -->
+    <div class="section">
+        <h2 class="section-title">
+            <span class="number">3</span>
+            Modul Praktik & Aktivitas Belajar Siswa
+        </h2>
+
+        <!-- Lembar Kerja 1 -->
+        <div class="module-step">
+            <div class="module-step-header">
+                <span class="module-step-title">Aktivitas 1: Pembuatan Kop Surat Resmi & Insert Image</span>
+                <span class="file-badge">Bukti Karya: Kop_Surat_Nama.docx</span>
+            </div>
+            <ol>
+                <li>Buka aplikasi pengolah kata (Microsoft Word / Google Docs), buat dokumen baru.</li>
+                <li>Aktifkan area <strong>Header</strong> (klik ganda pada bagian atas halaman).</li>
+                <li>Ketik struktur identitas sekolah: Nama Dinas Pendidikan, Nama Sekolah (SMK Negeri 1 Cendekia), Alamat Lengkap, Nomor Telepon, Email, dan Website resmi.</li>
+                <li>Sisipkan logo sekolah melalui menu <code>Insert > Pictures</code>. Ubah pemformatan <strong>Wrap Text</strong> menjadi <code>Square</code> atau <code>Tight</code>, lalu atur posisi logo secara presisi di sebelah kiri teks alamat.</li>
+                <li>Buat garis pembatas kop ganda (tebal-tipis) di bawah alamat menggunakan fitur <code>Paragraph Borders and Shading</code>.</li>
+                <li>Simpan dokumen dengan format nama: <code>Kop_Surat_Nama.docx</code>.</li>
+            </ol>
+        </div>
+
+        <!-- Lembar Kerja 2 -->
+        <div class="module-step">
+            <div class="module-step-header">
+                <span class="module-step-title">Aktivitas 2: Penyusunan Konsep & Struktur Undangan</span>
+                <span class="file-badge">Bukti Karya: Konsep_Undangan.docx</span>
+            </div>
+            <ol>
+                <li>Buka dokumen baru, salin kop surat resmi yang telah dibuat pada Aktivitas 1.</li>
+                <li>Pelajari teori komponen surat undangan formal (Kop, Nomor, Lampiran, Perihal, Tanggal, Tujuan, Salam Pembuka, Isi, Rincian, Penutup, Tanda Tangan) dan bedakannya dengan undangan informal.</li>
+                <li>Ketik seluruh draf mentah surat undangan kegiatan Pameran Inovasi Teknologi berdasarkan studi kasus di atas.</li>
+                <li>Pada tahap ini, fokuslah pada kelengkapan struktur dan redaksi teks tanpa melakukan penataan gaya font atau posisi titik dua.</li>
+                <li>Simpan dokumen dengan format nama: <code>Konsep_Undangan.docx</code>.</li>
+            </ol>
+        </div>
+
+        <!-- Lembar Kerja 3 -->
+        <div class="module-step">
+            <div class="module-step-header">
+                <span class="module-step-title">Aktivitas 3: Praktik Layouting & Pengaturan Tab Stop</span>
+                <span class="file-badge">Bukti Karya: Undangan_Layout.docx</span>
+            </div>
+            <ol>
+                <li>Buka dokumen <code>Konsep_Undangan.docx</code>.</li>
+                <li>Atur jenis font seluruh isi dokumen menggunakan <strong>Times New Roman</strong> ukuran 12 pt dengan spasi baris 1.15 dan perataan paragraf rata kiri-kanan (<em>Justify</em>).</li>
+                <li>Pada bagian rincian acara (Hari/Tanggal, Waktu, Tempat, Acara), aktifkan penggaris (<em>Ruler</em>).</li>
+                <li>Pasang titik <strong>Left Tab Stop</strong> pada penggaris di posisi <code>4.0 cm</code> (untuk posisi titik dua) dan <code>4.5 cm</code> (untuk awal teks rincian).</li>
+                <li>Gunakan tombol <code>Tab</code> pada keyboard untuk menyelaraskan titik dua (<code>:</code>) agar sejajar tegak lurus sempurna secara vertikal.</li>
+                <li>Simpan dokumen dengan format nama: <code>Undangan_Layout.docx</code>.</li>
+            </ol>
+        </div>
+
+        <!-- Lembar Kerja 4 -->
+        <div class="module-step">
+            <div class="module-step-header">
+                <span class="module-step-title">Aktivitas 4 & 5: Penyempurnaan Format, Margin, & Print Setup</span>
+                <span class="file-badge">Bukti Karya: Undangan_Final.docx & Print_Ready.pdf</span>
+            </div>
+            <ol>
+                <li>Atur ukuran margin dokumen kedinasan: <code>Top: 3 cm</code>, <code>Left: 4 cm</code>, <code>Bottom: 3 cm</code>, <code>Right: 3 cm</code> pada menu <em>Page Setup</em>.</li>
+                <li>Konfigurasikan ukuran kertas menjadi <strong>A4</strong> (21 x 29.7 cm) atau <strong>F4/Folio</strong> (<em>Custom Size</em>: 21.59 x 33 cm).</li>
+                <li>Lakukan evaluasi kerapian visual seluruh dokumen melalui fitur <strong>Print Preview</strong> (<code>Ctrl + P</code>) untuk memastikan tidak ada teks yang terpotong atau halaman kosong berlebih (<em>blank page</em>).</li>
+                <li>Ekspor/Simpan dokumen ke format PDF melalui menu <code>File > Save As / Export to PDF</code>.</li>
+                <li>Simpan file Word dengan nama <code>Undangan_Final.docx</code> dan file PDF dengan nama <code>Print_Ready.pdf</code> (serta siapkan 1 lembar Hasil Cetak Fisik).</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Section 4: Rubrik Penilaian -->
+    <div class="section">
+        <h2 class="section-title">
+            <span class="number">4</span>
+            Matriks Rubrik Penilaian Guru
+        </h2>
+        <p style="margin-bottom: 15px; font-size: 14px;">Matriks penilaian berbasis skala 0 hingga 4 untuk mengukur ketercapaian kompetensi siswa secara obyektif:</p>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="indicator-header">Indikator Penilaian Guru</th>
+                        <th class="scale-header">Skala 0<br><small>(Tidak Ada)</small></th>
+                        <th class="scale-header">Skala 1<br><small>(Sangat Kurang)</small></th>
+                        <th class="scale-header">Skala 2<br><small>(Cukup)</small></th>
+                        <th class="scale-header">Skala 3<br><small>(Baik)</small></th>
+                        <th class="scale-header">Skala 4<br><small>(Sangat Baik)</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="indicator-title">1. Presisi Header, Garis Kop, & Wrap Text Gambar</td>
+                        <td>Tidak menyerahkan tugas / file kosong.</td>
+                        <td>Header dibuat di body utama, logo acak-acakan (<em>In Line with Text</em>), garis dibuat dengan spasi/underscore.</td>
+                        <td>Header benar, <em>Wrap Text</em> gambar masih bergeser, garis kop dibuat manual pakai <em>Shape Line</em> tapi miring.</td>
+                        <td>Header dan <em>Wrap Text</em> tepat, garis kop rapi menggunakan <em>Border</em>, posisi logo sedikit kurang presisi.</td>
+                        <td>Header tepat di area header, logo teratur presisi dengan <em>Square/Tight</em>, garis ganda kop dibuat rapi dengan <em>Paragraph Border</em>.</td>
+                    </tr>
+                    <tr>
+                        <td class="indicator-title">2. Kelengkapan Komponen Surat Undangan</td>
+                        <td>Tidak ada berkas konsep surat.</td>
+                        <td>Komponen surat sangat tidak lengkap (hanya berisi teks singkat tanpa struktur formal).</td>
+                        <td>Memuat kop dan isi, namun tidak ada nomor surat, perihal, atau salam penutup.</td>
+                        <td>Seluruh komponen formal hadir, namun ada sedikit kekeliruan struktur pada bagian lampiran/tanda tangan.</td>
+                        <td>Seluruh komponen surat formal/non-formal lengkap, terstruktur sistematis sesuai standar kedinasan.</td>
+                    </tr>
+                    <tr>
+                        <td class="indicator-title">3. Kerapian Susunan & Konsistensi Font</td>
+                        <td>Tidak melakukan penataan layout.</td>
+                        <td>Menggunakan lebih dari 3 jenis font acak, ukuran font tidak seragam, hirarki teks berantakan.</td>
+                        <td>Penggunaan font konsisten (1–2 tipe), namun spasi antarparagraf dan perataan (<em>Justify</em>) belum rapi.</td>
+                        <td>Font konsisten, penataan paragraf rapi (<em>Justify</em>), hirarki judul/isi jelas, ada sedikit kesalahan spasi.</td>
+                        <td>Font konsisten (maks. 2 jenis), hirarki ukuran presisi, perataan paragraf rapi (<em>Justify</em>), spasi antarbagian proporsional.</td>
+                    </tr>
+                    <tr>
+                        <td class="indicator-title">4. Penggunaan Tab Stop & Margin Presisi</td>
+                        <td>Tidak menggunakan <em>Tab Stop</em> & margin acak.</td>
+                        <td>Meratakan titik dua menggunakan tombol spasi berulang kali sehingga posisi acak-acakan.</td>
+                        <td>Menggunakan tombol Tab biasa tanpa menyetel <em>Tab Stop Ruler</em>, posisi titik dua tidak sejajar lurus.</td>
+                        <td>Menggunakan <em>Tab Stop</em> pada penggaris dengan rapi, margin disesuaikan namun ada selisih kecil.</td>
+                        <td><em>Tab Stop</em> dipasang presisi di <em>Ruler</em>, seluruh titik dua tegak lurus sempurna, margin pas (3-4-3-3 cm).</td>
+                    </tr>
+                    <tr>
+                        <td class="indicator-title">5. Kesesuaian Print Setup & Hasil Cetak</td>
+                        <td>Tidak membuat file PDF / Cetak Fisik.</td>
+                        <td>Ukuran kertas salah (Letter/Default), teks terpotong saat dicetak, ada halaman kosong berlebih.</td>
+                        <td>Ukuran kertas diatur ke A4/F4 tetapi margin terpotong saat di-<em>Print Preview</em>.</td>
+                        <td><em>Print Setup</em> sesuai (A4/F4), file PDF berhasil dibuat, namun hasil cetak fisik sedikit bergeser/buram.</td>
+                        <td>Ukuran kertas A4/F4 terkonfigurasi sempurna, PDF rapi, hasil cetak fisik bersih, presisi, dan tidak ada elemen terpotong.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Modul Ajar Informatika Kelas X SMK — Kurikulum Merdeka / Pembelajaran Berbasis Proyek (PBL)</p>
+    </div>
+</div>
+
+</body>
+</html>
